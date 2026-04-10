@@ -1,0 +1,5 @@
+# DeepStream Python bindings and GStreamer are pre-installed in the base image.
+# pyds (DeepStream Python bindings) is system-installed at:
+#   /opt/nvidia/deepstream/deepstream/lib/pyds.so
+#
+# No additional pip packages required.
