@@ -1,0 +1,52 @@
+%YAML:1.0
+
+BaseConfig:
+  minDetectorConfidence: 0.1
+
+TargetManagement:
+  maxTargetsPerStream: 300
+  minIouDiff4NewTarget: 0.85
+  minTrackerConfidence: 0.3
+  probationAge: 2
+  maxShadowTrackingAge: 60
+  earlyTerminationAge: 1
+
+TrajectoryManagement:
+  useUniqueID: 0
+
+DataAssociator:
+  dataAssociatorType: 0
+  associationMatcherType: 1
+  checkClassMatch: 1
+  thresholdMahalanobis: 12.0
+  minMatchingScore4Overall: 0.1
+  minMatchingScore4SizeSimilarity: 0.3
+  minMatchingScore4Iou: 0.2
+  minMatchingScore4ReidSimilarity: 0.5
+  matchingScoreWeight4SizeSimilarity: 0.5
+  matchingScoreWeight4Iou: 0.4
+  matchingScoreWeight4ReidSimilarity: 0.6
+  tentativeDetectorConfidence: 0.2
+  minMatchingScore4TentativeIou: 0.2
+
+StateEstimator:
+  stateEstimatorType: 2
+  noiseWeightVar4Loc: 0.05
+  noiseWeightVar4Vel: 0.004
+  useAspectRatio: 1
+
+ReID:
+  reidType: 1
+  batchSize: 32
+  workspaceSize: 1000
+  reidFeatureSize: 512
+  reidHistorySize: 100
+  inferDims: [3, 256, 128]
+  networkMode: 1
+  inputOrder: 0
+  colorFormat: 0
+  offsets: [0.0, 0.0, 0.0]
+  netScaleFactor: 0.00392156862745098
+  addFeatureNormalization: 1
+  onnxFile: "models/osnet_x0_25_msmt17.onnx"
+  modelEngineFile: "models/osnet_x0_25_msmt17.onnx_b32_gpu0_fp16.engine"
