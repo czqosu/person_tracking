@@ -1,5 +1,12 @@
-# DeepStream Python bindings and GStreamer are pre-installed in the base image.
-# pyds (DeepStream Python bindings) is system-installed at:
-#   /opt/nvidia/deepstream/deepstream/lib/pyds.so
+# Runtime dependencies (pre-installed in DeepStream 7.1 base image):
+#   - pyds 1.1.11 (NVIDIA DeepStream Python bindings, installed via .whl in Dockerfile)
+#   - GStreamer 1.0 + GLib (system packages)
+#   - TensorRT, CUDA (system packages)
 #
-# No additional pip packages required.
+# No additional pip packages required at runtime.
+
+# Development dependencies (only needed for tools/export_osnet.py):
+# torch
+# torchreid
+# gdown
+# onnx
