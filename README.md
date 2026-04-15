@@ -36,7 +36,7 @@ filesrc → qtdemux → h264parse → nvv4l2decoder (NVDEC)
 docker build --network=host -t person-tracker .
 
 mkdir -p output
-docker run --runtime=nvidia \
+docker run --runtime=nvidia --network=host \
   -v /path/to/your/videos:/data \
   -v $(pwd)/output:/app/output \
   person-tracker \
@@ -51,6 +51,9 @@ First run compiles TensorRT engines (~9 min). Subsequent runs start instantly.
 - NVIDIA Jetson (JetPack 6.x / L4T R36.x)
 - Docker with [NVIDIA Container Runtime](https://docs.nvidia.com/dgx/nvidia-container-runtime-upgrade/) (`sudo apt install nvidia-container-runtime`) 
 - H.264 MP4 input video
+
+**Do NOT install `nvidia-cuda-toolkit` from the Ubuntu apt repository on Jetson.**
+Jetson's CUDA is pre-installed via JetPack/L4T. The Ubuntu generic `nvidia-cuda-toolkit` package pulls in `libnvidia-compute-590-server` (an x86/server driver library) as a recommended dependency, which overwrites the native NVML library and causes a driver/library version mismatch
 
 ## Performance
 
