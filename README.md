@@ -32,19 +32,51 @@ filesrc → qtdemux → h264parse → nvv4l2decoder (NVDEC)
 
 ## Quick Start
 
+### 1. Build
+
 ```bash
 sudo docker build --network=host -t person-tracker .
+```
 
+When the build succeeds, you should see:
+
+```
+Step 11/12 : ENTRYPOINT ["python3", "main.py"]
+...
+Successfully built xxxxxxxxxx
+Successfully tagged person-tracker:latest
+```
+
+### 2. Run
+
+For example, if your input video is `video.mp4` located in `~/Downloads`:
+
+```bash
 mkdir -p output
 sudo docker run --runtime=nvidia --network=host \
-  -v /path/to/your/videos:/data \
+  -v /home/j4012/Downloads:/data \
   -v $(pwd)/output:/app/output \
   person-tracker \
   --input /data/video.mp4 \
-  --output /app/output/tracked.mp4
+  --output /app/output/tracked.mp4 2>&1 | tee run.log
 ```
 
 First run compiles TensorRT engines (~9 min). Subsequent runs start instantly.
+
+When the video is processed successfully, you should see:
+
+```
+===== NvVideo: NVENC =====
+...
+[Pipeline] Input:  /data/video.mp4
+[Pipeline] Output: /app/output/tracked.mp4
+[Pipeline] Processing...
+[Pipeline] EOS
+[Pipeline] Done. 625 frames in 42.0s (14.9 fps)
+[Pipeline] Output saved: /app/output/tracked.mp4
+```
+
+The tracked output video can be found in the `output/` folder.
 
 ## Requirements
 
