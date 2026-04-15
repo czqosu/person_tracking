@@ -33,7 +33,7 @@ filesrc → qtdemux → h264parse → nvv4l2decoder (NVDEC)
 ## Quick Start
 
 ```bash
-docker build -t person-tracker .
+docker build --network=host -t person-tracker .
 
 mkdir -p output
 docker run --runtime=nvidia \
