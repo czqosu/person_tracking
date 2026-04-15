@@ -37,8 +37,8 @@ StateEstimator:
 
 ReID:
   reidType: 1
-  batchSize: 32
-  workspaceSize: 1000
+  batchSize: 16
+  workspaceSize: 200
   reidFeatureSize: 512
   reidHistorySize: 100
   inferDims: [3, 256, 128]
