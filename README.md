@@ -36,7 +36,7 @@ filesrc → qtdemux → h264parse → nvv4l2decoder (NVDEC)
 sudo docker build --network=host -t person-tracker .
 
 mkdir -p output
-docker run --runtime=nvidia --network=host \
+sudo docker run --runtime=nvidia --network=host \
   -v /path/to/your/videos:/data \
   -v $(pwd)/output:/app/output \
   person-tracker \
