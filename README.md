@@ -49,7 +49,7 @@ First run compiles TensorRT engines (~9 min). Subsequent runs start instantly.
 ## Requirements
 
 - NVIDIA Jetson (JetPack 6.x / L4T R36.x)
-- Docker with `--runtime=nvidia`
+- Docker with [NVIDIA Container Runtime](https://docs.nvidia.com/dgx/nvidia-container-runtime-upgrade/) (`sudo apt install nvidia-container-runtime`) 
 - H.264 MP4 input video
 
 ## Performance
